@@ -7,17 +7,15 @@ it can be easily extended to allow for the analysis of any tabular dataset.
 ## Set Up
 
 1. Clone this repository to wherever you need it:
-   * `git clone https://github.com/SomeoneInParticular/dcm-classic-ml.git`
+   * `git clone https://github.com/SomeoneInParticular/modular_optuna_ml.git`
 2. Create a new Conda/Mamba environment with the dependencies needed:
-   * `conda env create -f classic_ml_reloaded.yml`
-   * `mamba env create -f classic_ml_reloaded.yml`
+   * `conda env create -f environment.yml`
+   * `mamba env create -f environment.yml`
 3. Activate said environment
-   * `conda activate classic_ml_reloaded`
-   * `mamba activate classic_ml_reloaded`
+   * `conda activate modular_optuna_ml`
+   * `mamba activate modular_optuna_ml`
 4. Done!
-
-5. This only sets up the tool to be run; you will still need to create the configuration
-files for the analyses you want to run (see `testing` for an example).
+5. This only sets up the tool to be run; you will still need to create the configuration files for the analyses you want to run (see `testing` for an example).
 
 ## Running the Program
 
@@ -36,10 +34,16 @@ analysis, and where to save the results (currently only supports an SQLite DB ou
 example is provided in `testing/testing_study_config.json`
 
 Once all three have been created, and you have installed all dependencies (detailed in 
-`classic_ml_reloaded.yml`) simply run the following command (replacing the values within the 
+`environment.yml`) simply run the following command (replacing the values within the 
 curly brackets with the corresponding file name):
 
 `python run_ml_analysis.py -d {data_config} -m {model_config} -s {study_config}`
+
+For example, if you downloaded the source code for this package, you can run the following to test that everything was set up correctly:
+
+`python run_ml_analysis.py -d testing/iris_data/iris_config.json -m testing/model_configs/log_reg.json -s testing/testing_study_config.json`
+
+**NOTE:** By default, if a new study would overwrite the results of an old one, it will crash out instead. To force study over-writing, add the `--overwrite` flag to your command.
 
 ## Method Details
 

@@ -1,0 +1,10 @@
+name: modular_optuna_ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - optuna
+  - ca-certificates
+  - openssl
+  - scikit-learn
+  - pandas
